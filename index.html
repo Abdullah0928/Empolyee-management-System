@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            display: block;
+            width: 200px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-container {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        function showForm(formId) {
+            let forms = document.querySelectorAll('.form-container');
+            forms.forEach(form => form.style.display = 'none');
+            document.getElementById(formId).style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <h2>Employee Management System</h2>
+    <div class="container">
+        <button onclick="showForm('addEmployeeForm')">Add Employee</button>
+        <button onclick="showForm('updateEmployeeForm')">Update Employee</button>
+        <button onclick="showForm('deleteEmployeeForm')">Delete Employee</button>
+        <button onclick="showForm('viewEmployeesForm')">View Employees</button>
+        <button onclick="showForm('assignTaskForm')">Assign Task</button>
+        <button onclick="showForm('viewTasksForm')">View Tasks</button>
+    </div>
+
+    <div id="addEmployeeForm" class="form-container">
+        <h3>Add Employee</h3>
+        <form action="add_employee.php" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required><br>
+            <label>Email:</label>
+            <input type="email" name="email" required><br>
+            <label>Position:</label>
+            <input type="text" name="position" required><br>
+            <button type="submit">Add Employee</button>
+        </form>
+    </div>
+
+    <div id="updateEmployeeForm" class="form-container">
+        <h3>Update Employee</h3>
+        <form action="update_employee.php" method="POST">
+            <label>Employee ID:</label>
+            <input type="number" name="id" required><br>
+            <label>New Name:</label>
+            <input type="text" name="name"><br>
+            <label>New Email:</label>
+            <input type="email" name="email"><br>
+            <label>New Position:</label>
+            <input type="text" name="position"><br>
+            <button type="submit">Update Employee</button>
+        </form>
+    </div>
+
+    <div id="deleteEmployeeForm" class="form-container">
+        <h3>Delete Employee</h3>
+        <form action="delete_employee.php" method="POST">
+            <label>Employee ID:</label>
+            <input type="number" name="id" required><br>
+            <button type="submit">Delete Employee</button>
+        </form>
+    </div>
+
+    <div id="viewEmployeesForm" class="form-container">
+        <h3>Employee List</h3>
+        <a href="view_employees.php">View Employees</a>
+    </div>
+
+    <div id="assignTaskForm" class="form-container">
+        <h3>Assign Task</h3>
+        <form action="add_task.php" method="POST">
+            <label>Employee ID:</label>
+            <input type="number" name="employee_id" required><br>
+            <label>Task:</label>
+            <input type="text" name="task" required><br>
+            <button type="submit">Assign Task</button>
+        </form>
+    </div>
+
+    <div id="viewTasksForm" class="form-container">
+        <h3>View Employee Tasks</h3>
+        <a href="view_tasks.php">View Tasks</a>
+    </div>
+</body>
+</html>
